@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WallService.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oop_hw</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">WallService.kt</span></div><h1>WallService.kt</h1><pre class="source lang-java linenums">object WallService { //РћР±СЉРµРєС‚ WallService, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РїРѕСЃС‚С‹ РІ РјР°СЃСЃРёРІРµ.
+<span class="fc" id="L2">    private var posts = emptyArray&lt;Post&gt;() //РџРµСЂРµРјРµРЅРЅР°СЏ СЃ РїСѓСЃС‚С‹Рј РјР°СЃСЃРёРІРѕРј РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РїРѕСЃС‚РѕРІ</span>
+    private var nextId = 0 //Р”Р»СЏ РЅСѓРјРµСЂР°С†РёРё РїРѕСЃС‚РѕРІ РІ РјР°СЃСЃРёРІРµ
+
+    fun add(post: Post): Post { //Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РїРѕСЃС‚РѕРІ РІ РјР°СЃСЃРёРІ posts
+<span class="fc" id="L6">        posts += post.copy(id = ++nextId) //Р”РѕР±Р°РІР»СЏРµС‚ РІ РјР°СЃСЃРёРІ posts РЅРѕРІС‹Р№ РїРѕСЃС‚, РїСЂРёСЃРІР°РёРІР°РµС‚ РµРјСѓ id</span>
+<span class="fc" id="L7">        return posts.last() //Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° posts</span>
+    }
+    fun update(postUp: Post): Boolean {
+<span class="fc" id="L10">        var result = false</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        for ((index, post) in posts.withIndex()) { //РџРµСЂРµР±РѕСЂ РїРѕСЃС‚РѕРІ РїРѕ РёРЅРґРµРєСЃСѓ (for each)</span>
+<span class="fc bfc" id="L12" title="All 2 branches covered.">            if (post.id == postUp.id) { //РЎСЂР°РІРЅРµРЅРёРµ id РїРѕСЃС‚Р° СЃ id РЅРѕРІРѕРіРѕ, РїРµСЂРµРґР°РЅРЅРѕРіРѕ РІ С„СѓРЅРєС†РёСЋ РїРѕСЃС‚Р°</span>
+<span class="fc" id="L13">                posts[index] = postUp.copy() //Р РµР·СѓР»СЊС‚Р°С‚ РєРѕРїРёРё РЅРѕРІРѕРіРѕ РїРѕСЃС‚Р° Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІ РјР°СЃСЃРёРІ</span>
+<span class="fc" id="L14">                result = true</span>
+            }
+        }
+<span class="fc" id="L17">        return result</span>
+    }
+    fun printAll() {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (post in posts) {</span>
+<span class="fc" id="L21">            println(post)</span>
+        }
+<span class="fc" id="L23">        println()</span>
+<span class="fc" id="L24">    }</span>
+    fun clear() {
+<span class="fc" id="L26">        posts = emptyArray() //РћС‡РёС‰Р°РµС‚ РјР°СЃСЃРёРІ</span>
+<span class="fc" id="L27">        nextId = 0 //РЎР±СЂР°СЃС‹РІР°РµС‚ СЃС‡С‘С‚С‡РёРє</span>
+<span class="fc" id="L28">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
